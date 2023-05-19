@@ -1,0 +1,33 @@
+{% extends 'magasin/base.html' %} {% block title %} Fourniseurs {% endblock title %} {% block content %}
+{% block body %} 
+<body>
+    <div class="container mt-5">
+      <form method="Post" class="post-form">
+        {% csrf_token %}
+       {{form.as_p}}
+       <button type="submit">Enregistrer</button>
+     </form>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telephone</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in fourniseurs %}
+      <tr>
+        <th>{{item.nom}}</th>
+        <th>{{ item.adresse }}</th>
+        <th>{{ item.email }}</th>
+        <th>{{ item.telephone }}</th>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</body>
+{% endblock %}
+{% endblock %}

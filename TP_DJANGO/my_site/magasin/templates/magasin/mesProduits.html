@@ -1,0 +1,36 @@
+{% extends 'magasin/base.html' %} {% block title %} Catalogue de produits {% endblock title %} {% block content %}
+ 
+ {% block body %} 
+
+
+    <div class="container mt-5">
+      <form method="Post" class="post-form">
+        {% csrf_token %}
+       {{form.as_p}}
+       <button type="submit">Enregistrer</button>
+     </form>
+      {% if cat_filtre %}
+      <h1>Produits {{ cat_filtre.cat_name }}</h1>
+     {% else %}
+      <h1>Tous Les Produits</h1>
+     {% endif %}
+      <div class="row">
+        {% for product in products %}
+        <div class="card mx-3" style="width: 18rem;" id="{{product.id}}">
+          <img src="{{product.image}}" class="card-img-top" width="200" height="150">
+          <div class="card-body">
+            <h5 class="card-title">{{product.libelle}}</h5>
+            <p class="card-text">{{product.description}}.</p>
+            <span class="price">{{product.prix}} TND</span> <br/>
+            <a href="#" class="btn btn-primary">Ajouter Au Panier</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+{% endblock %}
+
+
