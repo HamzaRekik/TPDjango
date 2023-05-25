@@ -79,15 +79,14 @@ class ProductAPIView(APIView):
         return Response(serializer.data)
     
 
-# class ProductViewset(viewsets.ReadOnlyModelViewSet):
-
-#     serializer_class = ProductSerializer
-#     def get_queryset(self):
-#         queryset = Produit.objects.all()
-#         category_id = self.request.GET.get('category_id')
-#         if category_id:
-#                 queryset = queryset.filter(categorie_id=category_id)
-#         return queryset
-
+class ProductViewset(viewsets.ReadOnlyModelViewSet):
+    serializer_class = ProductSerializer
+    
+    def get_queryset(self):
+        queryset = Product.objects.all()
+        category_id = self.request.GET.get('categorie')
+        if category_id:
+            queryset = queryset.filter(categorie=category_id)
+        return queryset
 
     

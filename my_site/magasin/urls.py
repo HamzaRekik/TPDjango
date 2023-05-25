@@ -9,6 +9,7 @@ urlpatterns = [
     path('vitrine',views.Vitrine),
     path('api/category/',CategoryAPIView.as_view()),
     path('api/product/',ProductAPIView.as_view()),
-    # path('api/product/<int:categorie_id>/', ProductViewset.as_view(), name='product-list'),
+   
+   
 
 ]

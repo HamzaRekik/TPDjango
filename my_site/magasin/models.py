@@ -33,7 +33,7 @@ class Produit(models.Model):
     Fournisseur = models.ForeignKey(Fournisseur, on_delete=models.CASCADE , null=True)
     prix = models.DecimalField(max_digits=10, decimal_places=3 , default=0.000)
     type = models.CharField(max_length=2 , choices=TYPE_CHOICES , default='em')
-    img = models.ImageField(upload_to='media/', blank=True )
+    image = models.ImageField(upload_to='media/media' , blank=True)
     
 
     def __str__(self):

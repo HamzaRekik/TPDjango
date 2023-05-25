@@ -8,7 +8,7 @@ from rest_framework import routers
 from magasin.views import *
 
 router = routers.SimpleRouter()
-# router.register('produit',ProductViewset,basename='produit')
+router.register('produit',ProductViewset,basename='produit')
 urlpatterns = [
     path('',views.main , name='main'),
     path('admin/', admin.site.urls),
@@ -17,6 +17,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name = 'logout'),
     path('login/',auth_views.LoginView.as_view(template_name='login.html'), name = 'login'),
     path('register/',views.register, name = 'register'),
-    # path('api_auth/',include('rest_framework.urls')),
-    path('api/',include(router.urls))
+    path('api_auth/',include('rest_framework.urls')),
+    path('api/',include(router.urls)),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
